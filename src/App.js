@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import InsertBar from './InsertBar'
+import ListTodo from "./ListTodo";
 
 class App extends Component {
   render() {
@@ -15,7 +16,10 @@ class App extends Component {
       //     To get started, edit <code>src/App.js</code> and save to reload.
       //   </p>
       // </div>
-      <InsertBar></InsertBar>
+      <div>
+        <InsertBar></InsertBar>
+        <ListTodo></ListTodo>
+      </div>
     );
   }
 }
