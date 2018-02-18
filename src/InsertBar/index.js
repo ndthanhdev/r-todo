@@ -6,17 +6,31 @@ import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-
 import Typography from 'material-ui/Typography';
 
 export default class Insertbar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.setState({
+            text: ""
+        });
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(oEvent) {
+        this.setState({
+            text: oEvent.target.value
+        });
+    }
+
     render() {
         return (
             <Card>
                 <Card>
                     <CardContent>
-                        <TextField label="Content"></TextField>
+                        <TextField label="Content" onChange={this.handleChange}></TextField>
                     </CardContent>
                     <CardActions>
-                        <Button variant="raised" color="primary">Add</Button>
+                        <Button variant="raised" color="primary" onClick={() => this.props.onAddTodo(this.state.text)} >Add</Button>
                     </CardActions>
-                </Card>               
+                </Card>
             </Card>
         );
     }

@@ -6,18 +6,26 @@ import EditIcon from 'material-ui-icons/Edit';
 import Checkbox from 'material-ui/Checkbox';
 
 export default class ListTodo extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
-        return (
-            <List>
+        let items = this.props.todos.map(todo => {
+            return (
                 <ListItem button>
                     <Checkbox />
-                    <ListItemText primary="item" />
+                    <ListItemText primary={todo} />
                     <ListItemSecondaryAction>
                         <IconButton aria-label="Comments">
                             <EditIcon />
                         </IconButton>
                     </ListItemSecondaryAction>
                 </ListItem>
+            );
+        });
+        return (
+            <List>
+                {items}
             </List>
         );
     }

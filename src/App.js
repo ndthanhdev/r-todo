@@ -5,7 +5,22 @@ import InsertBar from './InsertBar'
 import ListTodo from "./ListTodo";
 
 class App extends Component {
-  render() {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: []
+    };
+    this.handleAddTodo = this.handleAddTodo.bind(this);
+  }
+
+  handleAddTodo(text) {
+    this.setState({
+      todos: [...this.state.todos, text]
+    });
+  }
+
+  render() {    
     return (
       // <div className="App">
       //   <header className="App-header">
@@ -17,8 +32,8 @@ class App extends Component {
       //   </p>
       // </div>
       <div>
-        <InsertBar></InsertBar>
-        <ListTodo></ListTodo>
+        <InsertBar onAddTodo={this.handleAddTodo}></InsertBar>
+        <ListTodo todos={this.state.todos}></ListTodo>
       </div>
     );
   }
